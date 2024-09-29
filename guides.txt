@@ -1,0 +1,129 @@
+Comprehensive Guide to Using Sysmon PowerShell Scripts
+Overview of Sysmon
+
+Sysmon (System Monitor) is a Windows system service that logs system activity to the Windows Event Log. It provides detailed information about process creation, network connections, and file changes, which is invaluable for monitoring and incident response in cybersecurity.
+Prerequisites
+
+    Sysmon Installation:
+        Download Sysmon from the Microsoft Sysinternals website.
+        Unzip the downloaded file to a directory on your system.
+
+    PowerShell:
+        Ensure you have PowerShell installed (usually pre-installed on Windows).
+        Run PowerShell as an administrator to ensure you have the necessary permissions.
+
+    Execution Policy:
+        You may need to adjust the PowerShell execution policy to run scripts:
+
+        powershell
+
+        Set-ExecutionPolicy RemoteSigned
+
+Scripts Overview
+
+Here are the provided scripts, along with a detailed guide on how to use each one.
+1. Install Sysmon with Configuration
+
+Script: InstallSysmon.ps1
+Purpose:
+
+Installs Sysmon with a specified configuration file.
+Usage Steps:
+
+    Edit the Script:
+        Update the $symonPath to the location of Sysmon.exe.
+        Update the $configFilePath to the location of your configuration XML file.
+
+    Run the Script:
+
+    powershell
+
+    .\InstallSysmon.ps1
+
+2. Get Sysmon Event Logs
+
+Script: Get-SysmonEvents.ps1
+Purpose:
+
+Retrieves Sysmon event logs filtered by specific event IDs.
+Usage Steps:
+
+    Edit the Script:
+        Modify the $eventIDs array if you want to filter for different Sysmon event IDs.
+
+    Run the Script:
+
+    powershell
+
+    .\Get-SysmonEvents.ps1
+
+    View Output: The script will display the filtered event logs in the PowerShell console.
+
+3. Export Sysmon Logs to CSV
+
+Script: Export-SysmonLogs.ps1
+Purpose:
+
+Exports Sysmon logs to a CSV file for further analysis.
+Usage Steps:
+
+    Edit the Script:
+        Update the $outputFile variable to specify the desired output file path.
+
+    Run the Script:
+
+    powershell
+
+    .\Export-SysmonLogs.ps1
+
+    Access the CSV: The logs will be saved to the specified CSV file, which you can open in Excel or any text editor.
+
+4. Analyze Sysmon Logs for Suspicious Activity
+
+Script: Analyze-SysmonLogs.ps1
+Purpose:
+
+Checks Sysmon logs for signs of suspicious activity, such as unusual process creation.
+Usage Steps:
+
+    Edit the Script:
+        Modify the suspicious criteria based on your environment and what you consider suspicious.
+
+    Run the Script:
+
+    powershell
+
+    .\Analyze-SysmonLogs.ps1
+
+    Review Output: The script will print any detected suspicious process creations to the console.
+
+5. Create a Summary Report of Sysmon Events
+
+Script: SysmonSummaryReport.ps1
+Purpose:
+
+Generates a summary report of Sysmon events and saves it to a text file.
+Usage Steps:
+
+    Edit the Script:
+        Update the $outputFile variable to specify the desired output file path for the summary report.
+
+    Run the Script:
+
+    powershell
+
+    .\SysmonSummaryReport.ps1
+
+    Check the Report: Open the specified text file to view the summary of Sysmon events.
+
+Best Practices
+
+    Regular Monitoring: Schedule the scripts to run at regular intervals using Windows Task Scheduler for continuous monitoring.
+
+    Sysmon Configuration: Customize your Sysmon configuration file to log only the necessary events based on your organization’s needs. This reduces noise in the logs and focuses on the most relevant events.
+
+    Log Management: Consider implementing a log management solution to centralize and analyze logs from Sysmon and other sources for better incident response capabilities.
+
+    Review and Update: Regularly review and update your scripts and Sysmon configurations to adapt to evolving threats and organizational changes.
+
+    Test in Controlled Environments: Before deploying scripts in a production environment, test them in a controlled setting to avoid any disruptions.
